@@ -23,15 +23,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a href="@home.Url" class="btn btn-link btn-lg" @*style="color: gray"*@>
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse">     
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="@home.Url" class="btn btn-lg">
+                        @*<a href="@home.Url" class="btn btn-lg">
                             <span class="glyphicon glyphicon-home"></span>
-                        </a>
+                        </a>*@
                     </li>
-                    @{Html.RenderPartial("~/Views/Partials/Navigation/_TopNavigation.cshtml");}                  
+                    @{Html.RenderPartial("~/Views/Partials/Navigation/_TopNavigation.cshtml");}
                 </ul>
             </div>
         </div>
