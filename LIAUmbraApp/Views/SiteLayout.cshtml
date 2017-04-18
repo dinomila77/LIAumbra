@@ -1,6 +1,7 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = null;
+    var home = @CurrentPage.Site();
 }
 
 <!DOCTYPE html>
@@ -25,10 +26,11 @@
 
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                @{Html.RenderPartial("~/Views/Partials/Navigation/_TopNavigation.cshtml");} 
+                @*<ul class="nav navbar-nav">
                     <li></li>
                     <li></li>
-                </ul>
+                </ul>*@
             </div>
         </div>
     </div>
