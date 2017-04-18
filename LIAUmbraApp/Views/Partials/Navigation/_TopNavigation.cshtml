@@ -3,13 +3,13 @@
 
 @if (home.Children.Any())
 {
-    <ul class="nav navbar-nav">
-        @foreach (var childPage in home.Children)
+    @*<ul class="nav navbar-nav">*@
+        foreach (var childPage in home.Children)
         {
             <li class="@(childPage.IsAncestorOrSelf(CurrentPage) ? "selected" : null)">
                 <a href="@childPage.Url">@childPage.Name</a>
             </li>
         }
-    </ul>
+    @*</ul>*@
 }
 
