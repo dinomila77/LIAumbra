@@ -40,7 +40,6 @@ namespace LIAUmbraApp.Controllers
             };
 
             client.Send(msg);
-            //TempData["message"] = "Email successfully sent!";
         }
     }
 }
