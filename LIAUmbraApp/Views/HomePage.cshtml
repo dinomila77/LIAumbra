@@ -1,7 +1,4 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
-@*@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>*@
-
-@using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
 	Layout = "SiteLayout.cshtml";
 }
@@ -10,4 +7,9 @@
 @Umbraco.Field("bodyText")
 @Umbraco.Field("ingress")
 
-<img src="~/Content/Images/sphere.jpg" style="height: 100%; width: 100%; object-fit: contain" />
+@*<img src="~/Content/Images/sphere.jpg" style="height: 100%; width: 100%; object-fit: contain" />*@
+@if (CurrentPage.HasValue("image"))
+{
+	var dynamicMediaItem = Umbraco.Media(CurrentPage.image);
+	<img src="@dynamicMediaItem.umbracoFile" alt="@dynamicMediaItem.Name" style="height: 100%; width: 100%; object-fit: contain"/>
+}
