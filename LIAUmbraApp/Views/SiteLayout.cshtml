@@ -23,17 +23,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="@home.Url" class="btn btn-link btn-lg" @*style="color: gray"*@>
+                <a href="@home.Url" class="btn btn-link btn-lg">
                     <span class="glyphicon glyphicon-home"></span>
                 </a>
             </div>
             <div class="navbar-collapse collapse">     
                 <ul class="nav navbar-nav">
-                    <li>
-                        @*<a href="@home.Url" class="btn btn-lg">
-                            <span class="glyphicon glyphicon-home"></span>
-                        </a>*@
-                    </li>
                     @{Html.RenderPartial("~/Views/Partials/Navigation/_TopNavigation.cshtml");}
                 </ul>
             </div>
@@ -41,7 +36,6 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
@@ -55,12 +49,3 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
-
-@*<html>
-        <head>
-            <title>My Umbraco</title>
-        </head>
-        <body>
-        @RenderBody()
-        </body>
-    </html>*@
