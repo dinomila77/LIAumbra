@@ -3,7 +3,7 @@
 
 @if (home.Children.Any())
 {
-    foreach (var childPage in home.Children.Where("Visible"))
+    foreach (var childPage in home.Children.Where("Visible").OrderBy("Name"))
     {
         <li class="@(childPage.IsAncestorOrSelf(CurrentPage) ? "selected" : null)">
             <a href="@childPage.Url">@childPage.Name</a>
