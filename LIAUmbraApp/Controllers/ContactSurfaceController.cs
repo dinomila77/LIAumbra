@@ -21,13 +21,18 @@ namespace LIAUmbraApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitForm(ContactModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return CurrentUmbracoPage();
+            try
             {
                 SendMail(model);
+                TempData["Success"] = "Email sent successfully!";
                 return RedirectToCurrentUmbracoPage();
             }
-
-            return CurrentUmbracoPage();
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("ErrorSendMail",ex.Message + "Please try again later.");
+                return CurrentUmbracoPage();
+            }    
         }
 
         private void SendMail(ContactModel model)
