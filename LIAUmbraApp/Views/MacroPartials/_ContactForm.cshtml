@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+
+
+@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Umbraco.Web
+@using Umbraco.Web.Controllers
+@using LIAUmbraApp.Models
+@using LIAUmbraApp.Controllers
+
+
+@{Html.RenderAction("RenderForm", "ContactSurface");}
+
+@*@{
+    
+  
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.RequiresJs("/umbraco_client/ui/jquery.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.min.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.unobtrusive.min.js");
+    
+    var success = TempData["FormSuccess"] != null;
+}
+
+NOTE: This RenderJsHere code should be put on your main template page where the rest of your script tags are placed'
+
+@Html.RenderJsHere()*@
+

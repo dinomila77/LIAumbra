@@ -371,6 +371,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\HomePage.cshtml" />
     <Content Include="Views\Partials\Navigation\_TopNavigation.cshtml" />
+    <Content Include="Views\MacroPartials\_ContactForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -429,7 +430,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53709</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
