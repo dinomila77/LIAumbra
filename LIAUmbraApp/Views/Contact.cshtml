@@ -4,5 +4,12 @@
 }
 
 <div class="container">
-	@{Html.RenderAction("RenderForm","ContactSurface");}
+    @{Html.RenderAction("RenderForm", "ContactSurface");}
+    @*@Html.Action("RenderForm", "ContactSurface")*@
+    
+    @*Html.Action: Renders the partial view as an HtmlString .This method result can be stored in a variable, since it returns string type value.
+    
+    Html.RenderAction: This method result will be directly written to the HTTP response stream means it used the same TextWriter object as used
+    in the current webpage/template. This method is faster than Action method since its result is directly written to the 
+    HTTP response stream which makes it fast.*@
 </div>
