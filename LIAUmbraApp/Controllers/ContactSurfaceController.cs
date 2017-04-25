@@ -14,7 +14,8 @@ namespace LIAUmbraApp.Controllers
         public ActionResult RenderForm()
         {
             const string partialViewFolder = "~/Views/Partials/Contact/";
-            return PartialView($"{partialViewFolder}_Contact.cshtml");
+            //return PartialView($"{partialViewFolder}_Contact.cshtml");
+            return PartialView($"{partialViewFolder}_ContactAlt.cshtml");
         }
 
         [HttpPost]
@@ -25,7 +26,8 @@ namespace LIAUmbraApp.Controllers
             try
             {
                 SendMail(model);
-                TempData["Success"] = "Email sent successfully!";
+                //TempData["Success"] = "Email sent successfully!";
+                TempData["Success"] = true;
                 return RedirectToCurrentUmbracoPage();
             }
             catch (Exception ex)
