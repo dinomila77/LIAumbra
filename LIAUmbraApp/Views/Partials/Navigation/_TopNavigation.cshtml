@@ -1,13 +1,29 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
-@{ var home = CurrentPage.Site(); }
 
+@*@{ var home = CurrentPage.Site(); }
 @if (home.Children.Any())
 {
-    foreach (var childPage in home.Children.Where("Visible").OrderBy("Name"))
-    {
-        <li class="@(childPage.IsAncestorOrSelf(CurrentPage) ? "selected" : null)">
-            <a href="@childPage.Url">@childPage.Name</a>
-        </li>
-    }
-}
+	foreach (var childPage in home.Children.Where("Visible").OrderBy("Name"))
+	{
+		<li class="@(childPage.IsAncestorOrSelf(CurrentPage) ? "selected" : null)">
+			<a href="@childPage.Url">@childPage.Name</a>
+		</li>
+	}
+}*@
 
+@*Vad gör denna rad: <li class="@(childPage.IsAncestorOrSelf(CurrentPage) ? "selected" : null)"> ??? *@
+
+
+@{
+	var page = CurrentPage.Site();
+}
+@if (page.Children.Any())
+{
+	foreach (var childPage in page.FirstChild("homePage").Children.Where("Visible"))
+	{
+		<li>
+			<a href="@childPage.Url">@childPage.Name</a>
+		</li>      
+	}
+}
+	
