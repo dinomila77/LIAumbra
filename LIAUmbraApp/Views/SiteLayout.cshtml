@@ -2,6 +2,9 @@
 @{
     Layout = null;
     var home = @CurrentPage.Site();
+    string currentUrl = CurrentPage.Url;
+    string englishUrl = "/en" + currentUrl.Substring(3);
+    string swedishUrl = "/sv" + currentUrl.Substring(3);
 }
 
 <!DOCTYPE html>
@@ -24,14 +27,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <nav id="Languages" class="nav navbar-nav">
+                    <a href="@englishUrl">English</a>
+                    <a href="@swedishUrl">Svenska</a>
+                </nav>
                 <a href="@home.Url" class="btn btn-link btn-lg">
                     <span class="glyphicon glyphicon-home"></span>
                 </a>
-            </div>
-            <div class="navbar-collapse collapse">     
+            </div>  
+            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @{Html.RenderPartial("~/Views/Partials/Navigation/_TopNavigation.cshtml");}
-                </ul>
+                </ul>      
             </div>
         </div>
     </div>
