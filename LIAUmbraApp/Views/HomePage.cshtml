@@ -3,7 +3,7 @@
 	Layout = "SiteLayout.cshtml";
 }
 
-<h2>Nulla neque dolor sagittis eget</h2>
+<h2>@Umbraco.GetDictionaryValue("mainHeader")</h2>
 @Umbraco.Field("bodyText")
 @Umbraco.Field("ingress")
 
