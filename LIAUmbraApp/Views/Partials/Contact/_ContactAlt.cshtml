@@ -1,6 +1,6 @@
 ﻿@using LIAUmbraApp.Controllers
-@model LIAUmbraApp.Models.ContactModel
-
+@inherits UmbracoViewPage<LIAUmbraApp.Models.ContactModel>
+@*@model LIAUmbraApp.Models.ContactModel*@
 
     @using (Html.BeginUmbracoForm<ContactSurfaceController>("SubmitForm",FormMethod.Post))
     {
