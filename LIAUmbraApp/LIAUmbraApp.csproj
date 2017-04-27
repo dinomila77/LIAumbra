@@ -410,6 +410,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ContactSurfaceController.cs" />
     <Compile Include="Controllers\HomePageSurfaceController.cs" />
+    <Compile Include="Controllers\TextPageSurfaceController.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -419,6 +420,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\HomePageSurface\" />
+    <Folder Include="Views\TextPageSurface\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
