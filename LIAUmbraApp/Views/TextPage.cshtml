@@ -13,13 +13,11 @@
 @{
 	if (Model.Content.HasValue("getContentOtherPage"))
 	{
-		//var page = Umbraco.Content(2083);
 		var page = Umbraco.Content(CurrentPage.getContentOtherPage);
 		int id = page.Id;
 		var curNode = Umbraco.TypedContent(id);
 		var nodeLang = curNode.GetCulture().IetfLanguageTag;
-		var sometext = Umbraco.CultureDictionary.Culture;
-
+		
 		if (page.DocumentTypeAlias == "homePage")
 		{
 			var content = page.GetPropertyValue("bodyText");
@@ -34,12 +32,9 @@
 				var test = translation.Value;
 				<h2>@test</h2>
 			}
-		   
-			@*<h2>@Umbraco.GetDictionaryValue(dictionaryItem.ItemKey)</h2>*@
-			@*<h2>@Umbraco.GetDictionaryValue(translation.Key.ToString())</h2>*@
-			
 			<p>@content</p>
-			<p>@content2</p>
+		    <p>@content2</p>
+
 			if (page.HasValue("image"))
 			{
 				var dynamicMediaItem = Umbraco.Media(page.image);
