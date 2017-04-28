@@ -7,4 +7,11 @@
 
 <div class="container">
 	@Umbraco.Field("bodyText")
+
+	@{
+		Html.RenderAction("RenderForm", "CreateContentSurface");
+	}
+
+	@*@{Html.RenderAction("RenderForm", "CreateContentSurface");}*@
+
 </div>
