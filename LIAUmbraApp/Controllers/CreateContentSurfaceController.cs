@@ -24,30 +24,40 @@ namespace LIAUmbraApp.Controllers
             if (!ModelState.IsValid) return CurrentUmbracoPage();
 
             //var umb = new UmbracoVirtualNodeByIdRouteHandler(1000);
-
-            try
+            if (CurrentPage.HasValue("parentId"))
             {
-                var contentService = ApplicationContext.Services.ContentService;
-                //var contentService2 = ApplicationContext.Current.Services.ContentService;
-                var parent = contentService.GetById(2076);
-
-                var newContent = contentService.CreateContent("New Node", parent, "textPage");
-                newContent.SetValue("bodyText","Hello");
-
-                var result = contentService.SaveAndPublishWithStatus(newContent);
-
-                if (result.Success)
+                try
                 {
-                    TempData["success"] = "Thank you!";
-                    return RedirectToCurrentUmbracoPage();
+                    var property = CurrentPage.GetProperty("parentId");
+                    var parentId = property.Value;
+                    //var x = id.DataValue;
+                    var contentService = ApplicationContext.Services.ContentService;
+                    //var contentService2 = ApplicationContext.Current.Services.ContentService;
+                    var parent = contentService.GetById((int) parentId);
+
+                    var newContent = contentService.CreateContent("New Page3", parent, "textPage");
+
+                    string text = $"First Name: {model.FirstName}\n Last Name: {model.LastName} \n Message: {model.Message}";
+                    
+                    
+                    newContent.SetValue("bodyText", $"Message: {model.Message}");
+
+                    var result = contentService.SaveAndPublishWithStatus(newContent);
+
+                    if (result.Success)
+                    {
+                        TempData["success"] = "Thank you!";
+                        return RedirectToCurrentUmbracoPage();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var error = $"{ex.Message}";
+                    ModelState.AddModelError("Error", error);
+                    return CurrentUmbracoPage();
                 }
             }
-            catch (Exception ex)
-            {
-                var error = $"{ex.Message}";
-                ModelState.AddModelError("Error", error);
-                return CurrentUmbracoPage();
-            }
+            
 
             return CurrentUmbracoPage();
         }
