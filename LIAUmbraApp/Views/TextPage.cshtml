@@ -1,4 +1,6 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.TextPage>
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using umbraco.interfaces
+@using umbraco.MacroEngines
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
 	Layout = "SiteLayout.cshtml";
@@ -6,5 +8,51 @@
 
 @CurrentPage.GetGridHtml("textPageGrid")
 @Umbraco.Field("bodyText")
-<br/>
+<br />
+
+@{
+	if (Model.Content.HasValue("getContentOtherPage"))
+	{
+		//var page = Umbraco.Content(2083);
+		var page = Umbraco.Content(CurrentPage.getContentOtherPage);
+		int id = page.Id;
+		var curNode = Umbraco.TypedContent(id);
+		var nodeLang = curNode.GetCulture().IetfLanguageTag;
+		var sometext = Umbraco.CultureDictionary.Culture;
+
+		if (page.DocumentTypeAlias == "homePage")
+		{
+			var content = page.GetPropertyValue("bodyText");
+			var content2 = page.GetPropertyValue("ingress");
+
+			var service = ApplicationContext.Current.Services.LocalizationService;
+			var dictionaryItem = service.GetDictionaryItemByKey("mainHeader");
+			var translation = dictionaryItem.Translations.SingleOrDefault(x => x.Language.CultureInfo.Name == nodeLang);
+
+			if (translation != null)
+			{
+				var test = translation.Value;
+				<h2>@test</h2>
+			}
+		   
+			@*<h2>@Umbraco.GetDictionaryValue(dictionaryItem.ItemKey)</h2>*@
+			@*<h2>@Umbraco.GetDictionaryValue(translation.Key.ToString())</h2>*@
+			
+			<p>@content</p>
+			<p>@content2</p>
+			if (page.HasValue("image"))
+			{
+				var dynamicMediaItem = Umbraco.Media(page.image);
+				<img src="@dynamicMediaItem.umbracoFile" alt="@dynamicMediaItem.Name" style="height: 100%; width: 100%; object-fit: contain" /> 
+			}
+		}
+		else
+		{
+			@page.GetGridHtml("textPageGrid")
+			<p>@page.GetPropertyValue("bodyText")</p>
+		}
+	}
+	<br />
+}
+
 												
