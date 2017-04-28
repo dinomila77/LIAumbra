@@ -10,9 +10,15 @@ namespace LIAUmbraApp.Controllers
     public class CreateContentSurfaceController : SurfaceController
     {
         // GET: CreateContentSurface
-        public ActionResult Index()
+        public ActionResult RenderForm()
         {
             return CurrentUmbracoPage();
         }
+
+        public ActionResult SubmitForm()
+        {
+            return CurrentUmbracoPage();
+        }
+
     }
 }
