@@ -4,11 +4,12 @@
 	Layout = "SiteLayout.cshtml";
 }
 
+
 <div class="container">
 	<br/>
-	<form action="/en/home/search/" method="GET">
-		<input type="text" placeholder="Search..." name="query">
-		<button>Search</button>
+	<form action="@Umbraco.GetDictionaryValue("searchPageUrl")" method="GET">
+		<input type="text" placeholder="@Umbraco.GetDictionaryValue("searchFieldPlaceHolder")" name="query">
+		<button>@Umbraco.GetDictionaryValue("searchButton")</button>
 	</form>
 
 	@{
@@ -16,17 +17,25 @@
 
 		if (!string.IsNullOrEmpty(searchQuery))
 		{
+			var results = Umbraco.Search(searchQuery);
+
 			<div class="searchresults">
-				<p>Your search results for <strong>@searchQuery</strong>
-				</p>
-				<ul>
-					@foreach (var result in Umbraco.Search(searchQuery))
-					{
-						<li>
-							<a href="@result.Url">@result.Name</a>
-						</li>
-					}
-				</ul>
+				@if (!results.Any())
+				{
+					<p>@Umbraco.GetDictionaryValue("searchNoResults") <strong>@searchQuery</strong></p>
+				}
+				else
+				{
+					<p>@Umbraco.GetDictionaryValue("searchFoundResults") <strong>@searchQuery</strong></p>
+					<ul>
+						@foreach (var result in results)
+						{
+							<li>
+								<a href="@result.Url">@result.Name</a>
+							</li> 
+						}
+					</ul> 
+				}
 			</div>
 		}
 	}
