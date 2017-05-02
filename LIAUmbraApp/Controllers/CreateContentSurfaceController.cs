@@ -45,6 +45,7 @@ namespace LIAUmbraApp.Controllers
                                  $"<h4>Message: {model.Message}</h4>";
 
                 newContent.SetValue("bodyText", text);
+                newContent.SetValue("umbracoNaviHide",false);
                 contentService.SaveAndPublishWithStatus(newContent);
                 TempData["success"] = "Thank you!";
                 return RedirectToCurrentUmbracoPage();
