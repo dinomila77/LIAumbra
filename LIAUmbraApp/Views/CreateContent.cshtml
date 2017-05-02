@@ -11,5 +11,22 @@
 	@{
 		Html.RenderAction("RenderForm", "CreateContentSurface");
 	}
-
 </div>
+
+@{
+	var page = CurrentPage;
+
+	if (page.Children.Any())
+	{
+		foreach (var childPage in page.Children.Where("Visible"))
+		{
+			@*<li>
+				<a href="@childPage.Url">@childPage.Name</a>
+			</li>*@
+			<li class="@(childPage.IsAncestorOrSelf(CurrentPage) ? "selected" : null)">
+				<a href="@childPage.Url">@childPage.Name</a>
+			</li>
+		}
+	}
+}
+
