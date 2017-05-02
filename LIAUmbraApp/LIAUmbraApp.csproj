@@ -374,6 +374,7 @@
     <Content Include="Views\MacroPartials\_ContactForm.cshtml" />
     <Content Include="Views\Partials\Contact\_ContactAlt.cshtml" />
     <Content Include="Views\TextPage.cshtml" />
+    <Content Include="Views\SearchPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
