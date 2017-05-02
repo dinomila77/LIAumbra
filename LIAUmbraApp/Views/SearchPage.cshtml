@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "SiteLayout.cshtml";
+}
+
+
+<div class="container">
+	<br/>
+	<form action="@Umbraco.GetDictionaryValue("searchPageUrl")" method="GET">
+		<input type="text" placeholder="@Umbraco.GetDictionaryValue("searchFieldPlaceHolder")" name="query">
+		<button>@Umbraco.GetDictionaryValue("searchButton")</button>
+	</form>
+
+	@{
+		var searchQuery = Request.QueryString["query"];
+
+		if (!string.IsNullOrEmpty(searchQuery))
+		{
+			var results = Umbraco.Search(searchQuery);
+
+			<div class="searchresults">
+				@if (!results.Any())
+				{
+					<p>@Umbraco.GetDictionaryValue("searchNoResults") <strong>@searchQuery</strong></p>
+				}
+				else
+				{
+					<p>@Umbraco.GetDictionaryValue("searchFoundResults") <strong>@searchQuery</strong></p>
+					<ul>
+						@foreach (var result in results)
+						{
+							<li>
+								<a href="@result.Url">@result.Name</a>
+							</li> 
+						}
+					</ul> 
+				}
+			</div>
+		}
+	}
+</div>

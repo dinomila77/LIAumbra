@@ -376,6 +376,7 @@
     <Content Include="Views\TextPage.cshtml" />
     <Content Include="Views\CreateContent.cshtml" />
     <Content Include="Views\Partials\CreateContent\_CreateContent.cshtml" />
+    <Content Include="Views\SearchPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
