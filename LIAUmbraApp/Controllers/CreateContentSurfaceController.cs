@@ -33,21 +33,25 @@ namespace LIAUmbraApp.Controllers
                 var contentService = ApplicationContext.Services.ContentService;
                 //var contentService2 = ApplicationContext.Current.Services.ContentService;
                 var parent = contentService.GetById((int) parentId);
+                var newPage = Umbraco.GetDictionaryValue("createContent");
+                var firstName = Umbraco.GetDictionaryValue("firstName");
+                var lastName = Umbraco.GetDictionaryValue("lastName");
+                var message = Umbraco.GetDictionaryValue("emailMessage");
 
-                var newContent = contentService.CreateContent("New Page", parent, "textPage");
+                var newContent = contentService.CreateContent(newPage, parent, "textPage");
 
-                string text = $"<br/><br/><p><strong>First Name:</strong> {model.FirstName}</p> " +
-                              $"<p><strong>Last Name:</strong> {model.LastName}</p> " +
-                              $"<p><strong>Message:</strong> {model.Message}</p>";
+                string text = $"<br/><br/><p><strong>{firstName}:</strong> {model.FirstName}</p> " +
+                              $"<p><strong>{lastName}:</strong> {model.LastName}</p> " +
+                              $"<p><strong>{message}:</strong> {model.Message}</p>";
 
-                string bigtext = $"<br/><h4>First Name: {model.FirstName}</h4> " +
-                                 $"<h4>Last Name: {model.LastName}</h4> " +
-                                 $"<h4>Message: {model.Message}</h4>";
+                string bigtext = $"<br/><h4>{firstName}: {model.FirstName}</h4> " +
+                                 $"<h4>{lastName}: {model.LastName}</h4> " +
+                                 $"<h4>{message}: {model.Message}</h4>";
 
                 newContent.SetValue("bodyText", text);
                 newContent.SetValue("umbracoNaviHide",false);
                 contentService.SaveAndPublishWithStatus(newContent);
-                TempData["success"] = "Thank you!";
+                TempData["success"] = Umbraco.GetDictionaryValue("thankYou");
                 return RedirectToCurrentUmbracoPage();
             }
             catch (Exception ex)
