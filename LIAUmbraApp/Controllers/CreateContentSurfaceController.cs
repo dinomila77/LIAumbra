@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using LIAUmbraApp.Models;
+using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
 
@@ -35,15 +37,19 @@ namespace LIAUmbraApp.Controllers
                     //var contentService2 = ApplicationContext.Current.Services.ContentService;
                     var parent = contentService.GetById((int) parentId);
 
-                    var newContent = contentService.CreateContent("New Page3", parent, "textPage");
+                    var newContent = contentService.CreateContent("New Page", parent, "textPage");
 
-                    string text = $"First Name: {model.FirstName}\n Last Name: {model.LastName} \n Message: {model.Message}";
-                    
-                    
-                    newContent.SetValue("bodyText", $"Message: {model.Message}");
+                    string text = $"<br/><br/><p><strong>First Name:</strong> {model.FirstName}</p> " +
+                                  $"<p><strong>Last Name:</strong> {model.LastName}</p> " +
+                                  $"<p><strong>Message:</strong> {model.Message}</p>";
 
+                    string bigtext = $"<br/><h4>First Name: {model.FirstName}</h4> " +
+                                     $"<h4>Last Name: {model.LastName}</h4> " +
+                                     $"<h4>Message: {model.Message}</h4>";
+
+                    newContent.SetValue("bodyText", text);
                     var result = contentService.SaveAndPublishWithStatus(newContent);
-
+                    
                     if (result.Success)
                     {
                         TempData["success"] = "Thank you!";
@@ -57,10 +63,8 @@ namespace LIAUmbraApp.Controllers
                     return CurrentUmbracoPage();
                 }
             }
-            
 
             return CurrentUmbracoPage();
         }
-
     }
 }
