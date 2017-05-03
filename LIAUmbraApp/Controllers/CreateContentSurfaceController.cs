@@ -15,8 +15,7 @@ namespace LIAUmbraApp.Controllers
     {
         public ActionResult RenderForm()
         {
-            const string path = "~/Views/Partials/CreateContent/";
-            return PartialView($"{path}_CreateContent.cshtml");
+            return PartialView("_CreateContent");
         }
 
         [HttpPost]

@@ -13,9 +13,8 @@ namespace LIAUmbraApp.Controllers
     {
         public ActionResult RenderForm()
         {
-            const string partialViewFolder = "~/Views/Partials/Contact/";
-            //return PartialView($"{partialViewFolder}_Contact.cshtml");
-            return PartialView($"{partialViewFolder}_ContactAlt.cshtml");
+            //return PartialView("_Contact");
+            return PartialView("_ContactAlt");
         }
 
         [HttpPost]
@@ -45,7 +44,6 @@ namespace LIAUmbraApp.Controllers
                 Subject = "Testing send email",
                 Body = model.Message
             };
-
             client.Send(msg);
         }
     }

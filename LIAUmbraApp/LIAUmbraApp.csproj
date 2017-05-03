@@ -364,18 +364,18 @@
     <Content Include="config\404handlers.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Partials\Contact\_Contact.cshtml" />
+    <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\SiteLayout.cshtml" />
     <Content Include="Views\Contact.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\HomePage.cshtml" />
-    <Content Include="Views\Partials\Navigation\_TopNavigation.cshtml" />
+    <Content Include="Views\Shared\_TopNavigation.cshtml" />
     <Content Include="Views\MacroPartials\_ContactForm.cshtml" />
-    <Content Include="Views\Partials\Contact\_ContactAlt.cshtml" />
+    <Content Include="Views\Shared\_ContactAlt.cshtml" />
     <Content Include="Views\TextPage.cshtml" />
     <Content Include="Views\CreateContent.cshtml" />
-    <Content Include="Views\Partials\CreateContent\_CreateContent.cshtml" />
+    <Content Include="Views\Shared\_CreateContent.cshtml" />
     <Content Include="Views\SearchPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
